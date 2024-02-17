@@ -458,13 +458,8 @@ offset 10.0
 
 ### 解が0, 1のみからなる連立方程式
 
-$$ 
-\begin{cases}
-5x - y + 2z &= 7\\
--3x + 4y + z &= -2\\
-x - 2y - 4z &= -3
-\end{cases}
-$$
+![SimulEquation1](./pic/SimulEquation1.png)
+
 解$(x, y, z) = (1, 0, 1)$
 
 ### ソースコード
@@ -500,13 +495,7 @@ offset 62.0
 
 ### 解が0, 1, 2, 3のみからなる連立方程式
 
-$$
-\begin{cases}
-x + y + z &=6\\
-2x + 3y - 2z &= 11\\
-3x - y + z &= 4
-\end{cases}
-$$
+![SimulEquation2](./pic/SimulEquation2.png)
 解$(x, y, z) = (2, 3, 1)$
 
 ### ソースコード
@@ -563,13 +552,8 @@ z =  0.0
 ```
 
 ### 解が0~255の整数からなる連立方程式
-$$ 
-\begin{cases}
-10x + 14y + 4z &= 5120\\
-9x + 12y + 2z &= 4230\\
-7x + 5y + 2z &= 2360
-\end{cases}
-$$ 
+
+![SimulEquaion3](./pic/SimulEquation3.png)
 
 ### ソースコード
 
@@ -644,3 +628,5 @@ z =  156.0
 ```
 
 ## 線形回帰
+
+### 問題
