@@ -10,3 +10,5 @@
 友達関係をできるだけ壊すように振り分けるには、
 どのようにグループ分けしたらいいか。
 ![MaxCut1](./pic/MaxCut1.png)
+
+[計算コード](./jupyter/MaxCut.ipynb)
