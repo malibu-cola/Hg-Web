@@ -1,6 +1,6 @@
-# 量子ゲートアルゴリズム
+[Top](https://malibu-cola.github.io/Hg-Web/)
 
-[Top](./https://malibu-cola.github.io/Hg-Web/)
+# 量子ゲートアルゴリズム
 
 このページでは量子ゲートアルゴリズムの学習記録を残しておきます。
 

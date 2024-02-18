@@ -1,6 +1,6 @@
-# 勉強用ページ
-
 [Top](https://malibu-cola.github.io/Hg-Web/)
+
+# 勉強用ページ
 
 学んだことをここに列挙していきます。
 
