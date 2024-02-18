@@ -9,7 +9,8 @@
 - [IBMの量子プログラミングの資格勉強](./IBMCertified/IBMCertified.md)
 - [QUBO(量子アニーリングマシーン)](./QUBO/QUBO.md)
 - [Qiskit　量子ゲートアルゴリズム](./Qiskit/Qiskit.md)
-
+- [量子ゼミナール](./QuantumSeminer/QuantumSeminer.md)
+- 
 ## 競プロ
 
 - [Atcoder](./Atcoder/Atcoder.md)
