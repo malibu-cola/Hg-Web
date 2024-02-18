@@ -11,25 +11,18 @@
 !pip install git+https://github.com/tytansdk/tytan
 ```
 
-## [最大カット問題](./MaxCut.md)
+## 各アルゴリズム
 
-## [温度計パズル](./ThermoPazzle.md)
-
-## [数字を均等に２組に分ける](./DivideNum.md)
-
-## [シフト最適化](./ShiftOptimize.md)
-
-## [お絵かきロジック](./DrawLogic.md)
-
-## [巡回セールスマン問題](./TravelSales.md)
-
-## [クラスタリング](./Clustering.md)
-
-## [連立方程式を解く](./SimulEquation.md)
-
-## [線形回帰](./LSM.md)
-
-## [ナップザック問題](./Knapsack.md)
+- [最大カット問題](./MaxCut.md)
+- [温度計パズル](./ThermoPazzle.md)
+- [数字を均等に２組に分ける](./DivideNum.md)
+- [シフト最適化](./ShiftOptimize.md)
+- [お絵かきロジック](./DrawLogic.md)
+- [巡回セールスマン問題](./TravelSales.md)
+- [クラスタリング](./Clustering.md)
+- [連立方程式を解く](./SimulEquation.md)
+- [線形回帰](./LSM.md)
+- [ナップザック問題](./Knapsack.md)
 
 ## その他
 
