@@ -5,7 +5,7 @@
 このページでは量子ゲートアルゴリズムの学習記録を残しておきます。
 
 - [ドイチアルゴリズム](https://qiita.com/malibu-cola/items/bf0d88cfaae415ee1e5e)(Qiitaの記事)
-- [グロー馬の探索アルゴリズム](https://qiita.com/malibu-cola/items/8aa650fb45e717665abb)(Qiitaの記事)
+- [グローバーの探索アルゴリズム](https://qiita.com/malibu-cola/items/8aa650fb45e717665abb)(Qiitaの記事)
 
 ## 参考
 
