@@ -11,6 +11,7 @@
 - [Qiskit　量子ゲートアルゴリズム](./Qiskit/Qiskit.md)
 - [量子ゼミナール](./QuantumSeminer/QuantumSeminer.md)
 - [論文](./QuantumPaper/QuantumPaper.md)
+- [その他](./Other/Other.md)
 
 ## 競プロ
 
