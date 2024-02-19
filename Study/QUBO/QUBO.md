@@ -109,4 +109,7 @@ x = 128*x0 + 64*x1 + 32*x2 + 16*x3 + 8*x4 + 4*x5 + 2*x6 + 1*x7
 
 ## その他
 
-[QUBOの条件式](https://vigne-cla.com/21-12/)
+- [QUBOの条件式](https://vigne-cla.com/21-12/)
+- [Blueqat club basic認定試験に向けての各種ポイント](https://blueqat.com/yuichiro_minato2/6bc363dd-373e-4354-aad3-a04985e314f2)
+- [Blueqat club standard認定試験に向けての各種ポイント](https://blueqat.com/yuichiro_minato2/0fec35c5-efaa-465a-89a8-fa91ce09458f)
+- [Blueqat club qubomaster認定試験に向けての各種ポイント](https://blueqat.com/yuichiro_minato2/c31102b3-27fb-4a56-a949-476a2d7bab60)
