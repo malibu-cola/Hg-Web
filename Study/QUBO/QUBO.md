@@ -15,6 +15,8 @@
 
 ## 各アルゴリズム
 
+### お勧めコース
+
 - [最大カット問題](./MaxCut.md)
 - [温度計パズル](./ThermoPazzle.md)
 - [数字を均等に２組に分ける](./DivideNum.md)
@@ -25,6 +27,12 @@
 - [連立方程式を解く](./SimulEquation.md)
 - [線形回帰](./LSM.md)
 - [ナップザック問題](./Knapsack.md)
+
+### チュートリアル
+
+- [NetworkXを利用したグラフ問題](./tutorial/tutorial00_networkx.md)
+- [Simulated Annealing手順](./tutorial/tutorial01_qubo.md)
+- [MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
 
 
 ## まとめ
