@@ -7,8 +7,8 @@
 ## 量子コンピュータ関連
 
 - [IBMの量子プログラミングの資格勉強](./IBMCertified/IBMCertified.md)
-- [QUBO(量子アニーリングマシーン)](./QUBO/QUBO.md)
-- [Qiskit　量子ゲートアルゴリズム](./Qiskit/Qiskit.md)
+- [QUBO(量子アニーリング)](./QUBO/QUBO.md)
+- [量子ゲートアルゴリズム](./Qiskit/Qiskit.md)
 - [量子ゼミナール](./QuantumSeminer/QuantumSeminer.md)
 - [論文](./QuantumPaper/QuantumPaper.md)
 - [その他](./Other/Other.md)
