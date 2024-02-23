@@ -1,8 +1,12 @@
-# [Hg-Web](https://malibu-cola.github.io/Hg-Web/)
+---
+layout: default
+---
 
-- [自己紹介](./SelfIntroduction/SelfIntroduction.md)
-- [勉強用](./Study/Study.md)
-- [最近読んだ本](./Book/Book.md)
+## [自己紹介](./SelfIntroduction/SelfIntroduction.md)
+
+## [勉強用](./Study/Study.md)
+
+## [最近読んだ本](./Book/Book.md)
 
 
 ## 最近のGithubの芝生状況

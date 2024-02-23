@@ -1,6 +1,4 @@
-[Top](https://malibu-cola.github.io/Hg-Web/)
-
-# 自己紹介(工事中)
+# 自己紹介
 
 ## 経歴
 

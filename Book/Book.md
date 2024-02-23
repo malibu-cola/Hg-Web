@@ -1,5 +1,3 @@
-[Top](https://malibu-cola.github.io/Hg-Web/)
-
 # 本
 
 ## 読んでいる本
