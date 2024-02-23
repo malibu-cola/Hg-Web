@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 [Top](https://malibu-cola.github.io/Hg-Web/)
 
 # QUBO
