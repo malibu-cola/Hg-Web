@@ -8,6 +8,28 @@
 - [グローバーの探索アルゴリズム](https://qiita.com/malibu-cola/items/8aa650fb45e717665abb)(Qiitaの記事)
 - [量子フーリエ変換](./QFourier/QFourier.md)
 
+
+## IBM Quantumで学ぶ量子コンピュータ
+
+[Standard認定試験](https://blueqat.com/yuichiro_minato2/0fec35c5-efaa-465a-89a8-fa91ce09458f)に合格するためにアルゴリズムの学習を行う。
+
+- FTQC向け
+  - [Deutsch-Jozsa](./)
+  - [Bernstein-Vazirani](./)
+  - [Simon](./)
+  - [量子フーリエ変換](./)
+  - [量子位相推定](./)
+  - [Shor](./)
+  - [HHL](./)
+  - [グローバ-](./)
+  - [量子振幅増幅](./)
+  - [量子振幅推定](./)
+  - [量子数値積分](./)
+- NISQ向け
+  - [QAOA](./)
+  - [量子機械学習](./)
+  - [VQE](./)
+
 ## 読みたい記事
 
 - [Qiskit OptimizationでQAOA](https://zenn.dev/derwind/articles/dwd-qiskit20)

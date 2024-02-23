@@ -30,9 +30,9 @@
 
 ### チュートリアル
 
-- [NetworkXを利用したグラフ問題](./tutorial/tutorial00_networkx.md)
-- [Simulated Annealing手順](./tutorial/tutorial01_qubo.md)
-- [MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
+- [00_NetworkXを利用したグラフ問題](./tutorial/tutorial00_networkx.md)
+- [01_Simulated Annealing手順](./tutorial/tutorial01_qubo.md)
+- [02_MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
 
 
 ## まとめ
