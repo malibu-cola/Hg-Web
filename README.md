@@ -1,14 +1,6 @@
----
-layout: default
----
+# Hg-Web
 
-## [自己紹介](./SelfIntroduction/SelfIntroduction.md)
+勉強したことをまとめるサイトを作りました。Webで作ることで、家の外からでも編集や閲覧ができます。
+そのうちWebページとして発展させていきたいとか思ったり思ってなかったりしてます。
 
-## [勉強用](./Study/Study.md)
-
-## [最近読んだ本](./Book/Book.md)
-
-
-## 最近のGithubの芝生状況
-
-![GithubGreen](https://ghchart.rshah.org/malibu-cola)
+サイトの[URL](https://malibu-cola.github.io/Hg-Web/)
