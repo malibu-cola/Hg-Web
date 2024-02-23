@@ -2,6 +2,18 @@
 layout: default
 ---
 
+## サンプル
+
+$$
+a = b
+$$
+
+~~~python
+import pandas as pd
+
+print('hoge')
+~~~
+
 [Top](https://malibu-cola.github.io/Hg-Web/)
 
 # QUBO
