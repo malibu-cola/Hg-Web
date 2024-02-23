@@ -16,3 +16,10 @@
 ## 競プロ
 
 - [Atcoder](./Atcoder/Atcoder.md)
+
+## サイトづくり
+
+- 参照サイト
+  - [GitHub Pagesで数式を表示する](https://marshmallow444.github.io/tech_blog/2021/07/29/tex-with-github-pages.html)　数式を埋め込むのに参照
+  - [Github Pagesで数式を](https://qiita.com/memakura/items/e4d2de379f98ad7be498) 同上
+  - [テクノなまこ](https://mikanixonable.hatenablog.com/entry/2023/10/07/114442)　同上
