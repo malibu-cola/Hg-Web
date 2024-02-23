@@ -1,7 +1,1 @@
-# theme: jekyll-theme-slate
-# markdown: kramdown
-# plugins:
-#  - jekyll-sitemap
-# highlighter: rouge
-# kramdown:
-#   hard_wrap: true
+theme: jekyll-theme-slate
