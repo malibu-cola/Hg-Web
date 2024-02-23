@@ -36,7 +36,7 @@ layout: default
 - [01_Simulated Annealing手順](./tutorial/tutorial01_qubo.md)
 - [02_MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
 - [03_二値整数計画問題](./tutorial/tutorial03_bil.md)
-
+- [06_ジョブシーケンス問題](https://colab.research.google.com/drive/1EVU334fC5Eg-5n0uUG5XIwwkc6KVdD3U?hl=ja)
 
 
 ## まとめ
