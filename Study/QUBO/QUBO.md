@@ -35,6 +35,8 @@ layout: default
 - [00_NetworkXを利用したグラフ問題](./tutorial/tutorial00_networkx.md)
 - [01_Simulated Annealing手順](./tutorial/tutorial01_qubo.md)
 - [02_MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
+- [03_二値整数計画問題](./tutorial/tutorial03_bil.md)
+
 
 
 ## まとめ
