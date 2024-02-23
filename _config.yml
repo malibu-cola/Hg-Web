@@ -2,6 +2,6 @@ theme: jekyll-theme-slate
 markdown: kramdown
 plugins:
  - jekyll-sitemap
-markdown: kramdown
-plugins:
- - jekyll-sitemap
+highlighter: rouge
+kramdown:
+  hard_wrap: true
