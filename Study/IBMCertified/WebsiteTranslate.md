@@ -1,6 +1,6 @@
 # 公式サイト和訳
 
-## Certification Overview
+## 【Certification Overview】
 
 IBM Qiskit 開発者は、量子コンピューティングの概念の基本的な知識を実証し、Qiskit オープン ソース ソフトウェア開発キット (SDK) を使用してそれらを表現できる個人です。 彼らは、Python プログラミング言語の Qiskit SDK を使用して、IBM 量子コンピューターおよびシミュレーター上で量子コンピューティング プログラムを作成および実行した経験があります。
 
@@ -11,7 +11,7 @@ IBM Qiskit 開発者は、量子コンピューティングの概念の基本的
 - 量子回路におけるさまざまなマルチ量子ビットゲートとその効果を理解する。
 - qiskit.circuit、qiskit.execute、qiskit.providers、qiskit.qasm、qiskit.quantum_info、qiskit.tools、および qiskit.visualization パッケージにある一般的に使用されるクラスと関数を含む、基本的な Qiskit SDK 機能を活用します。
 
-## お勧めスキル
+## 【お勧めスキル】
 
 - Online IBM Quantum Composer を使用して量子回路を作成、実行、結果の視覚化するための実用的な知識
 - Online IBM Quantum Lab にあるものなど、Qiskit SDK の機能を強調するサンプルの開発に関する実用的な知識
@@ -20,11 +20,11 @@ IBM Qiskit 開発者は、量子コンピューティングの概念の基本的
 - 量子状態測定確率に関する実用的な知識。
 - ベル状態を引き起こす一般的な回路に精通していること。
 
-## 要件
+## 【要件】
 
 **試験 C1000-112: Qiskit v0.2X Developer を使用した量子計算の基礎**
 
-## 試験の目的
+## 【試験の目的】
 
 IBM Qiskit Developerは、量子コンピューティングの概念の基本的な知識を実証し、Qiskit オープン ソース ソフトウェア開発キット (SDK) を使用してそれらを表現できる個人です。 彼らは、Python プログラミング言語の Qiskit SDK を使用して、IBM 量子コンピューターおよびシミュレーター上で量子コンピューティング プログラムを作成および実行した経験があります。 
 
@@ -86,7 +86,7 @@ developmentの試験中、主題専門家 (Subject Matter Experts; SMEs) は、�
 1. Qiskit バージョンに関する操作を実行する
 2. *%quiskit_backend_overview* から得た情報を使用する
 
-### 9. 視覚化を構築する 19%</summary>**
+### 9. 視覚化を構築する 19%
 
 1. 回路を描く
 2. データのヒストグラムをプロットする
@@ -102,22 +102,25 @@ developmentの試験中、主題専門家 (Subject Matter Experts; SMEs) は、�
 2. qasm_simulator バックエンドにアクセスする
 3. Unitary_simulator バックエンドにアクセスする
 
-## 試験リソース
+## 【試験リソース】
 
 認定試験の準備に役立つコースや出版物が提供されています。 認定試験を受ける前にコースを受講することをお勧めしますが、必須ではありません。 提供されるコースは継続的に追加および更新されますのでご了承ください。
 
 ### 学習ガイドのコンテンツ URL
 
 1. Qiskit Developer Certification Syllabus
+
 Qiskit v0.2X 開発者認定を使用した量子計算の基礎を準備するための学習ガイド
 
 ### オンラインラボ
 
 1. [Qiskit.Org](https://learning.quantum.ibm.com/)
+
 オープンソースの量子開発 Qiskit [quiss-kit] は、パルス、回路、アプリケーション モジュールのレベルで量子コンピューターを操作するためのオープンソース SDK です。
 
 ### プレゼンテーション
 
 1. [Study Guide](https://slides.com/javafxpert/prep-qiskit-dev-cert-exam)
+
 この試験の準備に役立つ、わかりやすい Web ベースのスライド資料を使用してください。 このガイドは無料ですぐに閲覧できます。
 
