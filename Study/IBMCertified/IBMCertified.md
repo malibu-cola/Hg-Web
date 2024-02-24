@@ -4,6 +4,11 @@
 
 [IBM Certified Associate Developer](https://www.ibm.com/training/certification/ibm-certified-associate-developer-quantum-computation-using-qiskit-v02x-C0010300)を取るために勉強します。
 
+
+## 公式サイト和訳
+
+[こちら](./WebsiteTranslate.md)
+
 ## 参考になりそうなページ
 
 - [IBMの量子プログラミングの資格をとった話](https://tech-blog.cloud-config.jp/2022-01-11-archive-ibm-quantum-developer)
