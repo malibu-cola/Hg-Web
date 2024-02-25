@@ -21,7 +21,9 @@
   - [グローバーのアルゴリズム](./QiskitOrg/GroverAlgorithm.md)
   - 量子近似最適化アルゴリズム(QAOA)
   - CHSHの不等式
-
+- ドキュメント
+  - [Qiskit Runtime](./QiskitOrg/run_primitives.md)
+- 
 ## 参考になりそうなページ
 
 - [IBMの量子プログラミングの資格をとった話](https://tech-blog.cloud-config.jp/2022-01-11-archive-ibm-quantum-developer)
