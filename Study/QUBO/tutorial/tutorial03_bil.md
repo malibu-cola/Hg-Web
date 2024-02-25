@@ -57,4 +57,47 @@ $$
 
 制約条件を満たすときQUBO式は$0$になる。
 
-## 1. 
+## ソースコード
+
+```python
+from tytan import *
+
+q = symbols_list(3, 'q{}')
+
+S = [[3, 2, 1], 
+          [5, 2, 3]]
+b = [3, 5]
+c = [1, 2, 1]
+
+HA = 0
+for i in range(2):
+    ha = 0
+    for j in range(3):
+        ha += S[i][j] * q[j]
+    ha -= b[i]
+    HA += ha ** 2
+print("HA:", HA)
+
+HB = 0
+for j in range(3):
+    HB -= q[j] * c[j]
+print('HB:', HB)    
+lam = 10
+H = HA + lam*HB
+
+qubo, offset = Compile(H).get_qubo()
+print('offset', offset)
+solver = sampler.SASampler()
+result = solver.run(qubo)
+print(result)
+
+```
+![tutorial03_1](./pic/tutorial03_1.png)
+
+結果の確認
+
+```python
+print('Sampler = ', result[0][0])
+print('Cost = ', result[0][1] + offset)
+```
+![tutorial03_2](./pic/tutorial03_2.png)
