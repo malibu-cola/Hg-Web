@@ -13,7 +13,7 @@
 
 - コース
   - 量子情報の基礎
-  - 量子アルゴリズムの基礎
+  - [量子アルゴリズムの基礎](./QiskitOrg/FundamentalsOfQuantumAlgorithms.md)
   - 変分アルゴリズムデザイン
   - 量子安全暗号の実践的な入門
 - チュートリアル
