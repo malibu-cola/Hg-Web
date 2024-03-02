@@ -37,7 +37,7 @@ layout: default
 - [02_MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
 - [03_二値整数計画問題](./tutorial/tutorial03_bil.md)
 - [04_グラフ分割問題とグラフカラーリング問題](./tutorial/tutorial04_graphcoloring.md)
-- [06_ジョブシーケンス問題](https://colab.research.google.com/drive/1EVU334fC5Eg-5n0uUG5XIwwkc6KVdD3U?hl=ja)
+- [06_ジョブシーケンス問題](./tutorial/tutorial06_job_sequencing_problem.md)
 
 
 ## まとめ
