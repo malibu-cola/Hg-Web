@@ -6,7 +6,7 @@ layout: default
 
 ## [勉強用](./Study/Study.md)
 
-## [最近読んだ本](./Book/Book.md)
+## [本棚](./Book/Book.md)
 
 
 ## 最近のGithubの芝生状況
