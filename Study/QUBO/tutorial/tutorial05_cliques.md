@@ -23,4 +23,47 @@ G.add_edges_from([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (2, 3), (4, 6)
 
 nx.draw(G, **options)
 ```
-![tutorial05_1](./pic/tutorial05_1.png)
+![tutorial05_1](./pic/tutorial05_01.png)
+
+「クリーク数4のクリークを探す」とは、「サイズ４の頂点の部分集合のうち、全ての頂点が辺で結ばれている集合」を探すこと。
+上記のグラフにおいてクリーク数4のクリークは$W = \{0, 1, 2, 3\}$である。この部分集合の辺数は6で、$\frac{4 \times 3}{2} = 6$を満たす。
+
+### QUBO式
+
+1. 部分集合の大きさが$K$となる制約
+
+$$
+    C_1 = \left(K - \sum_{v \in V} q_v \right)^2
+$$
+
+2. あらゆる２点を繋ぐ辺の数が$K(K - 1) /2$ある制約
+
+$$
+    C_2 = \frac{K(K - 1)}{2} - \sum_{u, v \in E} q_u q_v
+$$
+
+```python 
+from tytan import *
+
+q = symbols('q_{0:7}')
+
+C_1 = (K - sum(q))**2
+
+C_2 = K*(K - 1)/2 - sum(q[edge[0]] * q[edge[1]] for edge in G.edges)
+
+H = 10*C_1 + C_2
+
+qubo, offset = Compile(H).get_qubo()
+
+solver = sampler.SASampler()
+result = solver.run(qubo)
+
+print('Sampler = ', result[0][0])
+print('Cost = ', result[0][1] + offset)
+```
+![tutorial05_02](./pic/tutorial05_02.png)
+
+頂点$\{0, 1, 2, 3\}$にクリーク数4のクリークが見つけられた。
+
+## 【Clique Cover】
+

@@ -37,7 +37,9 @@ layout: default
 - [02_MaxCut問題と整数分割問題](./tutorial/tutorial02_maxcut.md)
 - [03_二値整数計画問題](./tutorial/tutorial03_bil.md)
 - [04_グラフ分割問題とグラフカラーリング問題](./tutorial/tutorial04_graphcoloring.md)
+- [05_クリーク判定問題とクリークカバー問題、厳密被覆問題](./tutorial/tutorial05_cliques.md)
 - [06_ジョブシーケンス問題](./tutorial/tutorial06_job_sequencing_problem.md)
+- []
 
 
 ## まとめ
