@@ -39,7 +39,7 @@ layout: default
 - [04_グラフ分割問題とグラフカラーリング問題](./tutorial/tutorial04_graphcoloring.md)
 - [05_クリーク判定問題とクリークカバー問題、厳密被覆問題](./tutorial/tutorial05_cliques.md)
 - [06_ジョブシーケンス問題](./tutorial/tutorial06_job_sequencing_problem.md)
-- [09_交通経路最適化問題](.tutorial/tutorial09_trafficflow_optimization.md)
+- [09_交通経路最適化問題](./tutorial/tutorial09_trafficflow_optimization.md)
 
 
 ## まとめ
