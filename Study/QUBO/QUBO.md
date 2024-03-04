@@ -40,6 +40,7 @@ layout: default
 - [05_クリーク判定問題とクリークカバー問題、厳密被覆問題](./tutorial/tutorial05_cliques.md)
 - [06_ジョブシーケンス問題](./tutorial/tutorial06_job_sequencing_problem.md)
 - [09_交通経路最適化問題](./tutorial/tutorial09_trafficflow_optimization.md)
+- [10_線形回帰](./tutorial/tutorial10_liner_reg.md)
 
 
 ## まとめ
@@ -106,11 +107,11 @@ x = 128*x0 + 64*x1 + 32*x2 + 16*x3 + 8*x4 + 4*x5 + 2*x6 + 1*x7
 ```
 
 |問題|n個からm個|降順|方程式|同時に1|One-Hot|N-bit|
-|--|--|--|--|--|--|--|
+|----|--------|---|-----|-------|-------|-----|
 |最大カット問題|O||||||
 |温度計パズル|O|O|||||
 |数字分割|||O|||||
-|シフト最適化|||O|||||w
+|シフト最適化|||O|||||
 |お絵かきロジック|O|||O|||
 |巡回セールスマン||||O|O||
 |クラスタリング||||O|O||
