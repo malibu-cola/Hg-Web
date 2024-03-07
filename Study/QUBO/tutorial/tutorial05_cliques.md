@@ -68,6 +68,8 @@ print('Cost = ', result[0][1] + offset)
 ![tutorial05_02](./pic/tutorial05_02.png)
 
 頂点$\{0, 1, 2, 3\}$にクリーク数4のクリークが見つけられた。
+![tutorial05_03](./pic/tutorial05_03.png)
 
 ## 【Clique Cover】
 
+![tutorial05_04](./pic/tutorial05_04.png)
