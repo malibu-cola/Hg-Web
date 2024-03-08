@@ -13,7 +13,7 @@
 ## 学習ノート
 
 - IBM Quantum Learning(Qiskit Textbookと同じ？)
-  - Basic of quantum information
+  - [Basic of quantum information](./IBMQuantumLearning/BasicOfQuantumInformation/SingleSystem.md)
 
 ## 参考になりそうなページ
 

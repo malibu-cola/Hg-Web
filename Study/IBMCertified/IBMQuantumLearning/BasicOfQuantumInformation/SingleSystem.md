@@ -13,5 +13,17 @@
 
 - Question3
 ![Question3](./pic/q03.png)
-
+![Answer3](./pic/a03.jpg)
 - Question4
+![Question4](./pic/q04.png)
+![Answer4](./pic/a04.jpg)
+
+- Question5
+![Question5](./pic/q05.png)
+
+- Question6
+![Question6](./pic/q06.png)
+
+- Question7
+![Question7](./pic/q07.png)
+![Answer7](./pic/a07.jpg)
