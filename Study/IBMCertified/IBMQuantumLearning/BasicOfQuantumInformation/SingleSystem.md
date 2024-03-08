@@ -2,6 +2,41 @@
 
 [こちら](https://learning.quantum.ibm.com/course/basics-of-quantum-information/exam)の試験の解説をする。
 
+## 基礎事項
+
+$$
+\sigma_x = 
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}, 
+\sigma_y = 
+\begin{pmatrix}
+0 & -i \\
+i & 0
+\end{pmatrix}, 
+\sigma_z = 
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+$$
+
+$$
+S = P_{\pi/2} = 
+\begin{pmatrix}
+1 & 0 \\
+0 & i
+\end{pmatrix},
+T = P_{\pi/4} = 
+\begin{pmatrix}
+1 & 0 \\
+0 & \frac{1 + i}{\sqrt{2}}
+\end{pmatrix}
+$$
+
+## 試験
+
 - Question1
 ![Question1](./pic/q01.png)
 ![Answer1](./pic/a01.jpg)
@@ -27,3 +62,16 @@
 - Question7
 ![Question7](./pic/q07.png)
 ![Answer7](./pic/a07.jpg)
+
+- Question8
+![Question8](./pic/q08.png)
+![Answer8](./pic/a08.jpg)
+
+- Question9
+![Question9](./pic/q09.png)
+![Answer9](./pic/a09.jpg)
+
+- Question11
+![Question11](./pic/q11.png)
+![Answer](./pic/a11.jpg)
+
