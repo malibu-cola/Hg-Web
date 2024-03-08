@@ -12,7 +12,8 @@
 
 ## 学習ノート
 
-- 
+- IBM Quantum Learning(Qiskit Textbookと同じ？)
+  - Basic of quantum information
 
 ## 参考になりそうなページ
 
