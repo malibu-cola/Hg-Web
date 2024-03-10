@@ -5,17 +5,17 @@
 ## 基礎事項
 
 $$
-\sigma_x = 
+X = 
 \begin{pmatrix}
 0 & 1 \\
 1 & 0
 \end{pmatrix}, 
-\sigma_y = 
+Y = 
 \begin{pmatrix}
 0 & -i \\
 i & 0
 \end{pmatrix}, 
-\sigma_z = 
+Z = 
 \begin{pmatrix}
 1 & 0 \\
 0 & -1
@@ -34,7 +34,15 @@ T = P_{\pi/4} =
 0 & \frac{1 + i}{\sqrt{2}}
 \end{pmatrix}
 $$
-
+$$
+CX = 
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{pmatrix}
+$$
 ## 試験
 
 - Question1
