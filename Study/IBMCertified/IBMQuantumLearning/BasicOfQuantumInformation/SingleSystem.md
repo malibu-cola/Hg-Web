@@ -79,7 +79,13 @@ $$
 ![Question9](./pic/q09.png)
 ![Answer9](./pic/a09.jpg)
 
+- Question10
+![Question10](./pic/q10.png)
+
 - Question11
 ![Question11](./pic/q11.png)
 ![Answer](./pic/a11.jpg)
 
+- Question12
+![Question12](./pic/q12.png)
+![Answer12](./pic/a12.jpg)
