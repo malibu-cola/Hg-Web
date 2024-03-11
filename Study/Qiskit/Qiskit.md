@@ -30,6 +30,13 @@
   - [量子機械学習](./)
   - [VQE](./)
 
+## 講義
+
+- ### 量子ソフトウェア産学協働ゼミ(藤堂研)
+  - [こちら](https://github.com/utokyo-qsw/joint-seminar/tree/main)のイベントに参加した際の勉強記録
+  - [学習ノート](./)
+
+
 ## 読みたい記事
 
 - [Qiskit OptimizationでQAOA](https://zenn.dev/derwind/articles/dwd-qiskit20)

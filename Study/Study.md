@@ -10,6 +10,8 @@
 - [量子ゼミナール](./QuantumSeminer/QuantumSeminer.md)
 - [論文](./QuantumPaper/QuantumPaper.md)
 - [その他](./Other/Other.md)
+- 講義
+  - [量子ソフトウェア産学協働ゼミ(藤堂研)](./TodoJobSeminar/note.md)
 
 ## 競プロ
 
