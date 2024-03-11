@@ -6,7 +6,7 @@
 ## 学んだ内容
 
 - 誤り訂正
-  - [誤り訂正符号の実装](./01_ErrorCorrectionCode.md)
+  - [誤り訂正符号の実装](./practice/01_ErrorCorrectionCode.md)
   - 論理ビット操作
   - 表面符号デモ
 - 誤り低減
