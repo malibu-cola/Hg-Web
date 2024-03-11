@@ -211,3 +211,104 @@ $$
 
 ## 5. Shorの符号
 
+Shorの符号は9量子ビット用いることで、１量子ビットまでのビット反転エラーと位相反転エラーの両方に対応できる。
+
+```python
+def make_shor_code(noise_channel: list[int] = [], p_error=0.02) -> QuantumCircuit:
+    # エラーの定義
+    bitphase_flip = make_bitphase_error_channel(p_error, print_flag=False)
+
+    # 回路
+    n_qubits = 9
+    circ = QuantumCircuit(n_qubits, 1)
+
+    circ.x(0)
+    circ.barrier()
+
+    # 符号化
+    circ.cx(0, 3)
+    circ.cx(0, 6)
+
+    circ.h(0)
+    circ.h(3)
+    circ.h(6)
+
+    circ.cx(0, 1)
+    circ.cx(0, 2)
+
+    circ.cx(3, 4)
+    circ.cx(3, 5)
+
+    circ.cx(6, 7)
+    circ.cx(6, 8)
+
+    circ.barrier()
+
+    # エラー発生箇所
+    for i in noise_channel:
+        assert (0 <= i) and (i < 9)
+        circ.append(bitphase_flip, [i])
+
+    circ.barrier()
+
+    # 復号
+    circ.cx(6, 8)
+    circ.cx(6, 7)
+
+    circ.cx(3, 5)
+    circ.cx(3, 4)
+
+    circ.cx(0, 2)
+    circ.cx(0, 1)
+
+    circ.ccx(2, 1, 0)
+    circ.ccx(5, 4, 3)
+    circ.ccx(8, 7, 6)
+
+    circ.h(0)
+    circ.h(3)
+    circ.h(6)
+
+    circ.cx(0, 6)
+    circ.cx(0, 3)
+    circ.ccx(6, 3, 0)
+
+    circ.measure([0], [0])
+
+    return circ
+```
+
+```python
+circ_ideal = make_shor_code()
+circ_ideal.draw('mpl')
+```
+
+![01_12](./pic/01_12.png)
+
+```python
+result_ideal = backend_sim.run(circ_ideal, shots=n_shots).result()
+plot_histogram(result_ideal.get_counts(0))
+```
+
+![01_13](./pic/01_13.png)
+
+エラーがない場合は正常に動作しました。
+
+## 課題2
+
+複数のチャネルにエラーをかけてみて、誤り訂正が成功するかどうかを確認してください。
+失敗する場合、エラー率がどの程度になるのかも確認してみてください。
+
+```python
+circ_error = make_shor_code(noise_channel=[0, 1, 2, 3])
+circ_error.draw("mpl")
+```
+
+![01_14](./pic/01_14.png)
+
+``` python
+result_error = backend_sim.run(circ_error, shots=n_shots).result()
+plot_histogram(result_error.get_counts(0))
+```
+
+![01_15](./pic/01_15.png)
