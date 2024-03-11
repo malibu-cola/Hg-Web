@@ -7,7 +7,7 @@
 
 - 誤り訂正
   - [誤り訂正符号の実装](./practice/01_ErrorCorrectionCode.md)
-  - 論理ビット操作
+  - 論理ビット操作([前編](./02_LogicalBitByShorCode.md), [後編](03_LogicalBitBySteaneCode.md))
   - 表面符号デモ
 - 誤り低減
   - 外挿法
