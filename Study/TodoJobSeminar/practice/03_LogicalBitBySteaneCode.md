@@ -305,4 +305,299 @@ plot_histogram(result_noise.get_counts(0))
 
 両方の量子ビットにエラーが発生した場合に、アンシラが111という状態になり、6番目の量子ビットにエラーが起きた場合と区別がつかなくなります。
 
+## 5. 論理ビット操作によるベル状態の作成
 
+今度はベル状態の作成を試すのですが、事前にベル状態を作成したものを符号化するのではなく、符号化された論理量子ビットに対して、論理ビット操作を加えて、ベル状態を作成します。
+
+先ほどの例では、補助量子ビットを6量子ビット使っていますが、量子ビット数を節約するため、リセットしながら3量子ビットを使い回して実装します。
+
+```python
+def steane_code_bell_state(noise_channel: list[int] = [], p_error: float = 0.1) -> QuantumCircuit:
+    # noise_channel : ノイズをかけたいチャネル(int)を入れたリスト
+    # p_error : エラーの発生確率
+    
+    # エラーの定義
+    bitphase_flip = make_bitphase_error_channel(p_error, print_flag=False)
+
+    # 回路の記述
+    # 符号化用が7x2ビット，アンシラが3ビット
+    n_qubits = 14 + 3
+    
+    qr = QuantumRegister(n_qubits)
+    cr = ClassicalRegister(2)
+    ancilla = ClassicalRegister(3)
+    
+    circ = QuantumCircuit(qr, cr, ancilla)
+    
+    circ.barrier()
+
+    # 符号化
+    for i in range(2):
+        circ.h(0 + i*7)
+        circ.h(1 + i*7)
+        circ.h(2 + i*7)
+
+        circ.cx(3 + i*7, 4 + i*7)
+        circ.cx(3 + i*7, 5 + i*7)
+
+        circ.cx(2 + i*7, 3 + i*7)
+        circ.cx(2 + i*7, 4 + i*7)
+        circ.cx(2 + i*7, 6 + i*7)
+
+        circ.cx(1 + i*7, 3 + i*7)
+        circ.cx(1 + i*7, 5 + i*7)
+        circ.cx(1 + i*7, 6 + i*7)
+
+        circ.cx(0 + i*7, 4 + i*7)
+        circ.cx(0 + i*7, 5 + i*7)
+        circ.cx(0 + i*7, 6 + i*7)
+    
+    circ.barrier()
+
+    # エラーチャネル
+    # ここで、論理アダマールゲートと論理CNOTゲートをかける 
+    for i in range(7):
+        circ.h(i)
+        
+    for i in range(7):
+        circ.cx(i, i+7)
+    
+    # エラーは以下で発生させる
+    for i in noise_channel:
+        assert (0 <= i) and (i < 17)
+        circ.append(bitphase_flip, [i])
+
+    # エラー訂正
+    
+    for i in range(2): # 論理ビット数に対応するループ
+        circ.barrier()
+        for j in range(3): # アンシラの初期化（同じものを使い回す）
+            circ.reset(j + 14) 
+            circ.h(j + 14)
+
+        # アンシラに情報を送る
+        circ.cz(14, 0 + i*7)
+        circ.cz(14, 4 + i*7)
+        circ.cz(14, 5 + i*7)
+        circ.cz(14, 6 + i*7)
+
+        circ.cz(15, 1 + i*7)
+        circ.cz(15, 3 + i*7)
+        circ.cz(15, 5 + i*7)
+        circ.cz(15, 6 + i*7)
+
+        circ.cz(16, 2 + i*7)
+        circ.cz(16, 3 + i*7)
+        circ.cz(16, 4 + i*7)
+        circ.cz(16, 6 + i*7)
+
+        for j in range(3):
+            circ.h(j + 14)
+            
+        # シンドローム測定
+        circ.measure(qr[14:17], ancilla)
+
+        circ.barrier()
+        
+        # ビット反転
+        
+        with circ.if_test((ancilla, 0b001)):
+            circ.x(0 + i*7)
+            
+        with circ.if_test((ancilla, 0b010)):
+            circ.x(1 + i*7)
+            
+        with circ.if_test((ancilla, 0b100)):
+            circ.x(2 + i*7)
+            
+        with circ.if_test((ancilla, 0b110)):
+            circ.x(3 + i*7)
+            
+        with circ.if_test((ancilla, 0b101)):
+            circ.x(4 + i*7)
+        
+        with circ.if_test((ancilla, 0b011)):
+            circ.x(5 + i*7)
+            
+        with circ.if_test((ancilla, 0b111)):
+            circ.x(6 + i*7)
+
+        # アンシラをリセットして使い回す
+        circ.barrier()
+        for j in range(3):
+            circ.reset(j + 14)
+            circ.h(j + 14)
+            
+        circ.cx(14, 0 + i*7)
+        circ.cx(14, 4 + i*7)
+        circ.cx(14, 5 + i*7)
+        circ.cx(14, 6 + i*7)
+
+        circ.cx(15, 1 + i*7)
+        circ.cx(15, 3 + i*7)
+        circ.cx(15, 5 + i*7)
+        circ.cx(15, 6 + i*7)
+
+        circ.cx(16, 2 + i*7)
+        circ.cx(16, 3 + i*7)
+        circ.cx(16, 4 + i*7)
+        circ.cx(16, 6 + i*7)
+        
+        for j in range(3):
+            circ.h(j + 14)
+            
+        # シンドローム測定
+        circ.measure(qr[14:17], ancilla)
+        
+        circ.barrier()
+        
+        # 位相反転
+        with circ.if_test((ancilla, 0b001)):
+            circ.z(0 + i*7)
+            
+        with circ.if_test((ancilla, 0b010)):
+            circ.z(1 + i*7)
+            
+        with circ.if_test((ancilla, 0b100)):
+            circ.z(2 + i*7)
+            
+        with circ.if_test((ancilla, 0b110)):
+            circ.z(3 + i*7)
+            
+        with circ.if_test((ancilla, 0b101)):
+            circ.z(4 + i*7)
+        
+        with circ.if_test((ancilla, 0b011)):
+            circ.z(5 + i*7)
+            
+        with circ.if_test((ancilla, 0b111)):
+            circ.z(6 + i*7)
+
+
+    circ.barrier()
+    
+    # 復号
+    for i in range(2):
+        circ.cx(0 + i*7, 4 + i*7)
+        circ.cx(0 + i*7, 5 + i*7)
+        circ.cx(0 + i*7, 6 + i*7)
+
+        circ.cx(1 + i*7, 3 + i*7)
+        circ.cx(1 + i*7, 5 + i*7)
+        circ.cx(1 + i*7, 6 + i*7)
+
+        circ.cx(2 + i*7, 3 + i*7)
+        circ.cx(2 + i*7, 4 + i*7)
+        circ.cx(2 + i*7, 6 + i*7)
+
+        circ.cx(3 + i*7, 4 + i*7)
+        circ.cx(3 + i*7, 5 + i*7)
+
+        circ.h(0 + i*7)
+        circ.h(1 + i*7)
+        circ.h(2 + i*7)
+
+    # 測定
+    circ.measure([3, 10], [0, 1])
+
+    return circ
+```
+
+```python
+circ = steane_code_bell_state()
+circ.draw("mpl")
+```
+
+![03_10](./pic/03_10.png)
+
+まずは誤りをかけない状態で、ベル状態が作れていることを確認します。
+
+```python
+%%time
+result_ideal = backend_sim.run(circ, shots=n_shots).result()
+plot_histogram(result_ideal.get_counts(0))
+```
+
+![03_11](./pic/03_11.png)
+
+## 課題1
+
+この回路にエラーを加えて、訂正できることを確認してみましょう。
+
+```python
+circ = steane_code_bell_state(noise_channel=[0])
+```
+
+```python
+%%time
+result_noise = backend_sim.run(circ, shots=n_shots).result()
+plot_histogram(result_noise.get_counts(0))
+```
+
+![03_12](./pic/03_12.png)
+
+![03_13](./pic/03_13.png)
+
+![03_14](./pic/03_14.png)
+
+## 課題2
+
+誤りの発生確率を変化させながら、実際に誤りが訂正できる確率を確認してみましょう。すべての量子ビットにエラーをかけて、結果を見てみます。
+
+```python
+circ = steane_code_bell_state(noise_channel=range(14), p_error=0.1)
+```
+
+```python
+%%time
+result_noise = backend_sim.run(circ, shots=n_shots).result()
+plot_histogram(result_noise.get_counts(0))
+```
+
+![03_15](./pic/03_15.png)
+
+このままでは見づらいので、以下の関数で本来測定したいビットの値だけ取り出します。
+
+```python
+def check_result(result) -> dict:
+    # result : qiskit.result.result.Result
+    
+    counts = result.get_counts()
+    output = dict()
+    
+    for key in counts.keys():
+        new_key = key[-2:] # 上位2ビットだけを取り出して、新たなキーにする
+        
+        if new_key not in output.keys():
+            output[new_key] = counts[key]
+        else:
+            output[new_key] += counts[key]
+    
+    return output
+
+output = check_result(result_noise)
+print(output)
+print(output["00"] + output["11"]) # 正しい出力の件数
+```
+
+![03_16](./pic/03_16.png)
+
+誤り率を変化させながら、実施し、結果の変化を確認してみましょう。
+
+```python
+
+errors = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+y = []
+for error in errors:
+    circ = steane_code_bell_state(noise_channel=range(14), p_error=error)
+    result_noise = backend_sim.run(circ, shots=n_shots).result()
+    output = check_result(result_noise)
+    y.append(output["00"] + output["11"])
+print(y)
+
+import matplotlib.pyplot as plt
+plt.scatter(errors, y)
+plt.show()
+```
+
+![03_17](./pic/03_17.png)
