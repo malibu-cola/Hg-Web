@@ -8,9 +8,9 @@
 - 誤り訂正
   - [誤り訂正符号の実装](./practice/01_ErrorCorrectionCode.md)
   - 論理ビット操作([前編](./practice/02_LogicalBitByShorCode.md), [後編](./practice/03_LogicalBitBySteaneCode.md))
-  - 表面符号デモ
+  - [表面符号デモ](./practice/03_SurfaceCode.md)
 - 誤り低減
-  - 外挿法
+  - [外挿法](./practice/04_ExtrapolationMethod.md)
   - QPE
   - 実機
 
