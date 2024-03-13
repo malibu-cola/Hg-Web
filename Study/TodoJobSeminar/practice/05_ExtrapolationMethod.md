@@ -242,10 +242,99 @@ def calc_noise_score(circ):
     counts_noise = result_noise.get_counts(0)
     noise_score = result_noise.get_counts(0)["1"] / n_shots
     return noise_score
+
+circ_length_list = [1]
+score_list = [noise_score]
+
+for i in range(1, 10):
+    circ = make_repeated_circ(i)
+    repeated_noise_score = calc_noise_score(circ)
+
+    circ_length_list.append(1 + i*2)
+    score_list.append(repeated_noise_score)
+
+print(score_list)
 ```
 
+![04_25](./pic/04_25.png)
 
+```python
+plt.plot(circ_length_list, "o-")
+plt.xtics([1 * i for i in range(20)])
+```
 
+![04_26](./pic/04_26.png)
 
+回路長に応じた出力の変化がプロットできた。
+これに、適切な関数を当てはめれば、いい推定ができそう。
 
+## 7. 線形回帰を行ってみる。
 
+あまり筋がよさそうには見えないが、まずは簡単な線型回帰から行ってみる。
+ここでは、後ほどより複雑な関数を使うことを見越して、scipyのcurve_fitを用いる。
+
+```python
+from scipy.optimize import curve_fit
+
+def linear_fitting(x, a, b):
+    return a*x + b
+
+# パラメータを推定する
+param, _ = curve_fit(linear_fitting, circ_length_list, score_list)
+
+# 推定した関数に当てはめてみる
+x_arr = np.array([0] + circ_length_list)
+fitting_result = [linear_fitting(x, param[0], param[1]) for x in x_arr]
+
+plt.plot(circ_length_list, score_list, 'o-')
+plt.plot([0] + circ_length_list, fitting_result, 'o-')
+plt.scatter([0], [true_score], c = 'r')
+plt.xticks([1 * i for i in range(20)])
+```
+
+![04_27](./pic/04_27.png)
+
+```python
+print(fitting_result[0])
+print(true_score)
+```
+
+![04_28](./pic/04_28.png)
+
+流石にあまり当てはまりが良くない
+
+## 演習：適切な関数で近似してみる
+
+プロットされた形状から適切な関数を考え、近似してみる
+
+```python
+import math
+from scipy.optimize import curve_fit
+
+# 単純に二次関数で近似
+def my_function(x, a, b, c):
+    return a*(x**2) + b*x + c
+
+param, _ = curve_fit(my_function, circ_length_list, score_list)
+
+x_arr = np.array([0] + circ_length_list)
+fitting_result = [my_sunction(x, param[0], param[1], param[2]) for x in x_arr]
+
+plt.plot(circ_length_list, score_list, 'o-')
+plt.plot([0] + circ_length_list, fitting_result, 'o-')
+plt.scatter([0], [true_score], c='r')
+plt.xtics([1 * i for i in range(20)])
+```
+
+![04_29](./pic/04_29.png)
+
+$y = a + b \times exp^{\frac{x}{x + c}}$で近似してみる
+
+```python
+import math
+from scipy.optimize import curve_fit
+def exponential_function(x,a,b, c):
+    return a + b*np.exp(x / (x + c))
+```
+
+![04_30](./pic/04_30.png)
