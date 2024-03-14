@@ -92,4 +92,147 @@ circ.draw('mpl')
 
 ![06_02](./pic/06_02.png)
 
+```python
+sim_ideal = AerSimulator()
+result_ideal = sim_ideal.run(circ, shots=n_shots).result()
+counts_ideal = result_ideal.get_counts(0)
+plot_histogram(counts_ideal)
+```
 
+![06_03](./pic/06_03.png)
+
+エラーがない場合、正しく001が100%の確率で出現することが確認できた。
+
+## 4. エラーありの場合
+
+```python
+sim_noise = AerSimulator(noise_model=noise_model)
+result_noise = sim_noise.run(circ, shots=n_shots).result()
+counts_noise = result_noise.get_counts(0)
+
+plot_histogram(counts_noise)
+```
+
+![06_04](./pic/06_04.png)
+
+エラーを加えると出力値がばらける。
+先ほどは１量子ビットのみだったので、1を取る確率を考えたが、ここでは二進数としての期待値を考えてみる。
+
+## 5. 期待値を計算する
+
+量子回路からの出力を期待値に変換する関数を以下に用意した。
+
+```python
+def key_to_value(key: str) -> float:
+    """
+    input
+    key: 0と1からなる文字列
+    output
+    val: keyを二進数に変換したもの
+    """
+    val = 0
+    x = 1 / 2
+    for i in key:
+        val += int(i) * x
+        x /= 2
+    return val
+
+def calc_avg(counts: dict) -> float:
+    total = 0
+    for key in counts.keys():
+        total += key_to_value(key) * counts[key]
+
+    return total / n_shots
+
+true_score = calc_avg(counts_ideal)
+print(true_score)
+```
+
+![06_05](./pic/06_05.png)
+
+```python
+noise_score = calc_avg(counts_noise)
+print(noise_score)
+```
+
+![06_06](./pic/06_06.png)
+
+エラーがない場合は正しく0.125(1/8)となり、
+エラーがある場合はこれより大きな値となっていることがわかる。
+
+## 6. エラー増幅回路
+
+[外挿法](./05_ExtrapolationMethod.md)と同じ仕組みで、回路長を増やしてエラーを増幅してみる。
+
+```python
+def make_repeated_circ(n_repeat: int) -> QuantumCircuit:
+    circ = make_QFT()
+
+    for _ in range(n_repeat):
+        circ = circ.compose(make_QFT().inverse(), range(4))
+        circ = circ.compose(make_QFT(), range(4))
+
+    circ.measure(range(3), range(3))
+    return circ
+
+circ = make_repeated_circ(1)
+circ.draw('mpl')
+```
+
+![06_07](./pic/06_07.png)
+
+```python
+def calc_noise_score(circ: QuantumCircuit) -> float:
+    result_noise = sim_noise.run(circ, shots=n_shots).result()
+    counts_noise = result_noise.get_counts(0)
+    noise_score = calc_avg(counts_noise)
+    return noise_score
+
+calc_length_list = [1]
+score_list = [noise_score]
+for i in range(1, 10):
+    circ = make_repeated_circ(i)
+    repeated_noise_score = calc_noise_score(circ)
+
+    circ_length_list.append(1 + i*2)
+    score_list.append(repeated_noise_score)
+
+print(score_list)
+```
+
+![06_08](./pic/06_08.png)
+
+```python
+plt.plot(circ_length_list, score_list, 'o-')
+```
+
+![06_09](./pic/06_09.png)
+
+## 7. 関数近似を行う
+
+```python
+from scipy.optimize import curve_fit
+
+def exponential_fitting(x, a, b, c):
+    return a + b*np.exp(x / (x + c))
+
+param_2, _ = curve_fit(exponential_fitting, circ_length_list, score_list, maxfev=100000)
+
+x_arr = np.array([0] + circ_length_list)
+fitting_result_2 = [exponential_fitting(x, param_2[0], param_2[1], param_2[2]) for x in x_arr]
+
+plt.plot(circ_length_list, score_list, 'o-')
+plt.plot([0] + circ_length_list, fittin_result_2, 'o-')
+plt.scatter([0], [true_score], c='r')
+```
+
+![06_10](./pic/06_10.png)
+
+```python
+print(fitting_result_2[0])
+print(true_score)
+```
+
+![06_11](./pic/06_11.png)
+
+![06_12](./pic/06_12.png)
