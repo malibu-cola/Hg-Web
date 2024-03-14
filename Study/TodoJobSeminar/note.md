@@ -11,7 +11,7 @@
   - [表面符号デモ](./practice/04_SurfaceCode.md)
 - 誤り低減
   - [外挿法](./practice/05_ExtrapolationMethod.md)
-  - QPE
+  - [QPE](./practice/06_QPE.md)
   - 実機
 
 
