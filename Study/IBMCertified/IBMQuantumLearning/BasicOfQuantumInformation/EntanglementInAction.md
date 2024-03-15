@@ -155,6 +155,60 @@ $$
 - アリスの測定が$ab = 01$となる確率は
 $$
 \begin{aligned}
-    ||\frac{1}{2} (\alpha\ket{0} + \beta{1})||^{2} = \frac{|\alpha|^2 + |\beta|^2}{4} = \frac{1}{4}
+    ||\frac{1}{2} (\alpha\ket{0} - \beta{1})||^{2} = \frac{|\alpha|^2 + |-\beta|^2}{4} = \frac{1}{4}
 \end{aligned}
 $$
+となり状態$(B, A, Q)$は
+$$
+\begin{aligned}
+(\alpha \ket{0} - \beta\ket{1})\ket{00}
+\end{aligned}
+$$
+この場合、ボブは Z ゲートを B に適用し、(B,A,Q) を状態
+$$
+\begin{aligned}
+    (\alpha \ket{0} + \beta\ket{1})\ket{01}
+\end{aligned}
+$$
+のままにします。
+
+- アリスの測定が$ab = 10$となる確率は
+$$
+\begin{aligned}
+    ||\frac{1}{2} (\alpha\ket{1} - \beta{0})||^{2} = \frac{|\alpha|^2 + |\beta|^2}{4} = \frac{1}{4}
+\end{aligned}
+$$
+$(B, A, Q)$の状態は
+$$
+\begin{aligned}
+    (\alpha\ket{1} + \beta\ket{0}) \ket{10}
+\end{aligned}
+$$
+となる。この時、ボブはqビット$B$にXゲートを課し、$(B, A, Q)$の状態は
+$$
+\begin{aligned}
+    (\alpha\ket{1} + \beta\ket{1})\ket{10}
+\end{aligned}
+$$
+となる。
+
+- アリスの測定が$ab = 11$となる確率は
+$$
+\begin{aligned}
+    ||\frac{1}{2} (\alpha\ket{1} - \beta{0})||^{2} = \frac{|\alpha|^2 + |-\beta|^2}{4} = \frac{1}{4}
+\end{aligned}
+$$
+$(B, A, Q)$の状態は
+$$
+\begin{aligned}
+    (\alpha\ket{1} - \beta\ket{0}) \ket{11}
+\end{aligned}
+$$
+となる。この時、ボブはqビット$B$にZXゲートを課し、$(B, A, Q)$の状態は
+$$
+\begin{aligned}
+    (\alpha\ket{0} + \beta\ket{1})\ket{11}
+\end{aligned}
+$$
+となる。
+
