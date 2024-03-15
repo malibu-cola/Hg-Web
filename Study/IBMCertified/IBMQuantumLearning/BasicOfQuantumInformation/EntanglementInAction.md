@@ -102,11 +102,15 @@ $$
 
 qビット$Q$が状態$\alpha\ket{0} + \beta\ket{1}$から始まるという過程の元、３qビット$(B, A, Q)$の状態は
 $$
+\begin{aligned}
     \ket{\pi_0} = \ket{\phi^+} \otimes (\alpha\ket{0} + \beta\ket{1}) = \frac{\alpha\ket{000} + \alpha\ket{110} + \beta\ket{001} + \beta\ket{111}}{\sqrt{2}}
+\end{aligned}
 $$
 となる。最初のゲートである制御NOTゲートにより
 $$
+\begin{aligned}
     \ket{\pi_1} = \frac{\alpha\ket{000} + \alpha\ket{110} + \beta\ket{011} + \beta\ket{101}}{\sqrt{2}}
+\end{aligned}
 $$
 となる。
 そしてアダマールゲートにより
@@ -136,15 +140,21 @@ $$
 
 - アリスの測定結果が$ab = 00$について、確率は
 $$
-||\frac{1}{2} (\alpha\ket{0} + \beta{1})||^{2} = \frac{|\alpha|^2 + |\beta|^2}{4} = \frac{1}{4}
+\begin{aligned}
+    ||\frac{1}{2} (\alpha\ket{0} + \beta{1})||^{2} = \frac{|\alpha|^2 + |\beta|^2}{4} = \frac{1}{4}
+\end{aligned}
 $$
 となり状態$(B, A, Q)$は
 $$
+\begin{aligned}
 (\alpha \ket{0} + \beta\ket{1})\ket{00}
+\end{aligned}
 $$
 この場合、ボブは何もしないので、これがこれら 3 つの量子ビットの最終状態になります。
 
 - アリスの測定が$ab = 01$となる確率は
 $$
-||\frac{1}{2} (\alpha\ket{0} + \beta{1})||^{2} = \frac{|\alpha|^2 + |\beta|^2}{4} = \frac{1}{4}
+\begin{aligned}
+    ||\frac{1}{2} (\alpha\ket{0} + \beta{1})||^{2} = \frac{|\alpha|^2 + |\beta|^2}{4} = \frac{1}{4}
+\end{aligned}
 $$
