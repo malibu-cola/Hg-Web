@@ -30,8 +30,10 @@ $$
 \ket{\phi^+} = \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}}\ket{11}
 \end{align}
 $$
+これは 4 つのベル状態の 1 つであり、もつれた量子状態の典型的な例として見られることがよくあります。
 
+また、次の 2 ビットの確率的状態の例にも遭遇しました。
 
-$$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$$
-$$\newcommand{\bra}[1]{\left\langle{#1}\right|}$$
-$$\newcommand{\braket}[2]{\left\langle{#1}\middle|{#2}\right\rangle}$$
+<!-- $$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$$ -->
+<!-- $$\newcommand{\bra}[1]{\left\langle{#1}\right|}$$ -->
+<!-- $$\newcommand{\braket}[2]{\left\langle{#1}\middle|{#2}\right\rangle}$$ -->
