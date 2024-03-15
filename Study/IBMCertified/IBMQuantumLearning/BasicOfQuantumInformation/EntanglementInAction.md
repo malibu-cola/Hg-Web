@@ -102,9 +102,28 @@ $$
 
 qビット$Q$が状態$\alpha\ket{0} + \beta\ket{1}$から始まるという過程の元、３qビット$(B, A, Q)$の状態は
 $$
-    \ket{\pi_0} = \ket{\phi^+} \otimes (\alpha\ket{0} + \beta\ket{1}) = \frac{\alpha\ket{000} + \alpha{110} + \beta{001} + \beta{111}}{\sqrt{2}}
+    \ket{\pi_0} = \ket{\phi^+} \otimes (\alpha\ket{0} + \beta\ket{1}) = \frac{\alpha\ket{000} + \alpha\ket{110} + \beta\ket{001} + \beta\ket{111}}{\sqrt{2}}
 $$
 となる。最初のゲートである制御NOTゲートにより
 $$
-    \ket{\pi_1} = \frac{\alpha{000} + \alpha{110} + \beta{011} + \beta{101}}{\sqrt{2}}
+    \ket{\pi_1} = \frac{\alpha\ket{000} + \alpha\ket{110} + \beta\ket{011} + \beta\ket{101}}{\sqrt{2}}
+$$
+となる。
+そしてアダマールゲートにより
+$$
+\begin{aliend}
+    \ket{\pi_2} 
+    &= \frac{\alpha\ket{00}\ket{+} + \alpha\ket{11}\ket{+} + \beta\ket{01}\ket{-} + \beta\ket{10}\ket{-}}{\sqrt{2}}
+    &= \frac{\alpha\ket{000} + \alpha\ket{001} + \alpha\ket{110} + \alpha\ket{111} + \beta\ket{010} - \beta\ket{011} + \beta\ket{100} - \beta\ket{101}}{2}
+\end{aligned}
+$$
+テンソル積の多重線形性を使用すると、この状態を次のように書くこともできます。
+$$
+\begin{aligned}
+\ket{\pi_2} = 
+&\frac{1}{2} (\alpha\ket{0} + \beta\ket{1})\ket{00}\\
+&\frac{1}{2} (\alpha\ket{0} - \beta\ket{1})\ket{01}\\
+&\frac{1}{2} (\alpha\ket{1} + \beta\ket{0})\ket{10}\\
+&\frac{1}{2} (\alpha\ket{1} - \beta\ket{0})\ket{00}
+\end{aligned}
 $$
