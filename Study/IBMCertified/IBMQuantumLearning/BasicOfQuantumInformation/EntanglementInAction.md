@@ -212,3 +212,195 @@ $$
 $$
 となる。
 
+4 つのケースすべてで、ボブの量子ビット B がプロトコルの終了時に状態 $\alpha\ket{0} + \beta\ket{1}$ のままであることがわかります。これが量子ビット Q の初期状態です。これが私たちが望んでいたものです。テレポーテーション プロトコルは、今回のケースでは正しく機能しました。
+
+また、量子ビット A と Q は、アリスが取得した測定結果に応じて、それぞれ 1/4 の確率で 4 つの状態 $\ket{00}, \ket{01}, \ket{10}, \ket{11}$のいずれかに残っていることがわかります。 したがって、上ですでに示唆したように、プロトコルの終了時には、アリスはもはや非クローン化定理によって予期される状態 $\alpha\ket{0} + \beta\ket{1}$を持たなくなります。
+
+また、アリスの測定では、状態 $\alpha\ket{0} + \beta\ket{1}$に関する情報がまったく得られないことにも注目してください。 つまり、4 つの可能な測定結果のそれぞれの確率は、$\alpha$と$\beta$に関係なく 1/4 です。 これは、テレポーテーションが正しく機能するためにも不可欠です。未知の量子状態から情報を抽出すると、一般に必ずその状態が乱されますが、ここではボブは乱されることなく状態を取得します。
+
+ここで、量子ビット Q が最初に別のシステム (R と名付けます) ともつれている、より一般的な状況を考えてみましょう。上記と同様の分析により、このより一般的なケースではテレポーテーション プロトコルが正しく機能することが明らかになります。 このプロトコルでは、ボブが保持する量子ビット B は、あたかもアリスが単に Q をボブに渡したかのように、プロトコルの開始時に Q が存在したのと同じ方法で R と絡み合います。
+
+これを証明するために、ペア (Q,R) の状態が最初に次の形式の量子状態ベクトルによって与えられると仮定します。
+$$
+\begin{aligned}
+    \alpha\ket{0}_Q \ket{\gamma_0}_R + \beta\ket{1}_Q\ket{\gamma_1}_R
+\end{aligned}
+$$
+ここで$\ket{\gamma_0}, \ket{\gamma_1}$は単位ベクトルであり, $\alpha, \beta$は$|\alpha|^2 + |\beta|^2 = 1$を満たす複素数である。
+任意の量子状態ベクトル対(Q, R)がこの方法で表現可能である。
+
+次の図は、前と同じ回路にシステム R を追加したものです (図の上部にある何も起こらない量子ビットの集合で表されます)。
+
+![entangle03](./pic/entangle03.avif)
+
+テレポーテーション プロトコルの実行時に何が起こるかを分析するには、レッスン 2 で説明したのと同じ方針に沿ってシステムを並べ替えると役立ちます。具体的には、システムの状態を(B、A、Q、R) ではなく (B、R、A、Q)にする。 わかりやすくするために、さまざまなシステムの名前が下付き文字として以下の式に含まれます。
+
+プロトコルの初めに系の状態は以下のようになっている。
+
+$$
+\begin{aligned}
+    \ket{\pi_0} &= \ket{\phi^+}_{BA} \otimes (\alpha\ket{0}_Q \ket{\gamma_o}_R + \beta\ket{1}_Q \let{\gamma_1}_R)\\
+    &= \frac{
+        \alpha\ket{0}_B \ket{\gamma_0}_R \ket{00}_{AQ} 
+        + \alpha\ket{1}_B \ket{\gamma_0}_R \ket{10}_{AQ} 
+        + \beta\ket{0}_B \ket{\gamma_1}_R \ket{01}_{AQ}
+        + \beta\ket{1}_B \ket{\gamma_1}_R \ket{11}_{AQ}  
+    }{\sqrt{2}}
+\end{aligned}
+$$
+最初の制御NOTゲートを適用すると
+$$
+\begin{aligned}
+\ket{\pi_1} = \frac{
+        \alpha\ket{0}_B \ket{\gamma_0}_R \ket{00}_{AQ} 
+        + \alpha\ket{1}_B \ket{\gamma_0}_R \ket{10}_{AQ} 
+        + \beta\ket{0}_B \ket{\gamma_1}_R \ket{01}_{AQ}
+        + \beta\ket{1}_B \ket{\gamma_1}_R \ket{11}_{AQ}  
+    }{\sqrt{2}}
+\end{aligned}
+$$
+次に、アダマール ゲートが適用されます。 上記のより単純なケースの分析と同様の線に沿って、結果の状態を拡張および単純化した後、結果の状態の次の式が得られます。
+$$
+\begin{aligned}
+\ket{\pi_2} = 
+&\frac{1}{2} (\alpha\ket{0}_B \ket{\gamma_0}_R + \beta\ket{1}_B \ket{\gamma_1}_R)\ket{00}_{AQ}
+&+ \frac{1}{2} (\alpha\ket{0}_B \ket{\gamma_0}_R - \beta\ket{1}_B \ket{\gamma_1}_R)\ket{01}_{AQ}
+&+ \frac{1}{2} (\alpha\ket{1}_B \ket{\gamma_0}_R + \beta\ket{0}_B \ket{\gamma_1}_R)\ket{10}_{AQ}
+&+ \frac{1}{2} (\alpha\ket{1}_B \ket{\gamma_0}_R - \beta\ket{0}_B \ket{\gamma_1}_R)\ket{11}_{AQ}
+\end{aligned}
+$$
+前とまったく同じように進めて、アリスの測定結果とボブが実行した対応するアクションの 4 つの異なる結果を考慮すると、プロトコルの終了時点で (B,R) の状態が常に
+$$
+\begin{aligned}
+\alpha\ket{0}\ket{\gamma_0} + \beta\ket{1}\ket{\gamma_1}
+\end{aligned}
+$$
+となる。
+非公式に言えば、上記の単純なケースと比較して、分析は大きく変わりません。 $\ket{\gamma_0}$と$\ket{\gamma_1}$は、基本的には「一緒に乗ってくる」だけです。 したがって、テレポーテーションは完全な量子通信チャネルの作成に成功し、量子ビット Q の内容を効果的に B に送信し、他のシステムとのすべての相関関係を維持します。
+
+結局のところ、上記のより単純なケースの分析を考慮すると、これは実際には驚くべきことではありません。 その分析で明らかになったように、任意の量子状態の量子ビットに対して恒等演算のように動作する物理プロセスがあり、それが起こり得る方法は 1 つだけです。プロトコルによって実装される演算は恒等演算でなければなりません。 つまり、テレポーテーションが単独の単一量子ビットに対して正しく機能することがわかれば、このプロトコルは完全でノイズのない量子チャネルを効果的に実装しているため、入力量子ビットが別のシステムともつれている場合でも正しく機能するはずであると結論付けることができます。 この結論を適切に説明するには、シリーズのユニット 3 で説明する量子情報の一般的な定式化が必要ですが、重要なのは、線形性により、実際にはより一般的な分析を行う必要がなかったということです。
+
+### さらなる議論
+
+ここでは、テレポーテーションについての短い結論をいくつか述べます。
+
+まず、テレポーテーションは量子情報の応用ではなく、量子通信を実行するためのプロトコルであることを理解する必要があります。 量子通信が有用である限りにおいてのみ有用です。
+
+第二に、おそらくエンタングルメント蒸留として知られるプロセスを通じて、テレポーテーションがいつか量子情報を伝達する標準的な方法になる可能性があると推測するのが合理的です。 これは、多数のノイズの多い (または不完全な) 電子ビットを少数の高品質の電子ビットに変換するプロセスであり、ノイズのない、またはほぼノイズのないテレポートに使用できます。 この考えは、もつれ蒸留のプロセスは直接量子通信ほど繊細ではないということです。 たとえば、損失を受け入れることもできますし、プロセスがうまくいかなかった場合は、もう一度試してみることもできます。 対照的に、私たちが通信したいと考えている実際の量子ビットは、はるかに貴重なものである可能性があります。
+
+最後に、テレポーテーションの背後にある考え方とその仕組みは、量子情報と計算において非常に基本的なものです。 これは量子情報理論の基礎であり、アイデアのバリエーションも頻繁に発生します。 ほんの一例として、量子ゲートはテレポーテーションを使用して実装できますが、通信ではなく選択された操作を適用する結果となるように、異なる初期状態と測定値が選択されます。
+
+### Qiskitでの実装
+
+```python
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit_aer import AerSimulator
+from qiskit.visualization import plot_histogram
+from qiskit.result import marginal_distribution
+from qiskit.circuit.library import UGate
+from numpy import pi, random
+```
+
+これは、テレポーテーション プロトコルの量子回路実装です。
+
+```python
+qubit = QuantumRegister(1, 'Q')
+ebit0 = QuatnumRegister(1, 'A')
+ebit1 = QuantumRegister(1, 'B')
+a = Classicalregister(1, 'a')
+b = ClassicalRegister(1, 'b')
+
+protocol = QuantumCircuit(qubit, ebit0, ebit1, a, b)
+
+# テレポーてションに使用するebitの準備
+protocol.h(ebit0)
+protocol.cx(ebit0, ebit1)
+protocol.barrier()
+
+# アリスの操作
+protocol.cx(qubit, ebit0)
+protocol.h(qubit)
+protocol.barrier()
+
+# アリスの測定とボブへ古典ビットの転送
+protocol.measure(ebit0, a)
+protocol.measure(qubit, b)
+protocol.barrier()
+
+# ボブは古典的なビットを使用して条件付きでゲートを適用します
+with protocol.if_test((a, 1)):
+    protocol.x(ebit1)
+with protocol.if_test((b, 1)):
+    protocol.z(ebit1)
+
+display(protocol.draw())
+```
+
+![entangle04](./pic/entangle04.svg)
+
+この回路では`barrier`関数や`if_test`関数など、これまでのレッスンではまだ見ていない Qiskit のいくつかの機能を利用します。 `barrier`関数は視覚的な分離を作成し、回路図を読みやすくします。また、回路が実際のハードウェアで実行されている場合、コンパイル中に Qiskit がバリアを越えてさまざまな単純化や最適化を実行するのを防ぎます。 `if_test`関数は、従来のビットまたはレジスタに応じて条件付きで演算を適用します。
+
+回路は最初に (A,B) を$\ket{\phi^+}$状態 (プロトコル自体の一部ではない) になるように初期化し、次にアリスの操作、次に彼女の測定、最後にボブの操作が続きます。
+
+プロトコルが正しく動作することをテストするために、ランダムに生成された単一量子ビット ゲートを Q の初期化された $\ket{0}$状態に適用して、テレポートされるランダムな量子状態ベクトルを取得します。 プロトコルの実行後にそのゲートの逆 (つまり、共役転置) を B に適用することで、$\ket{0}$状態に戻ったかどうかを測定することで、状態がテレポートされたことを確認できます。
+
+まず、ユニタリ量子ビット ゲートをランダムに選択します。
+
+```python
+random_gate = UGate(
+    theta   = random.random() * 2 * pi,
+    phi     = random.random() * 2 * pi,
+    lam     = random.random() * 2 * pi,
+)
+display(random_gate.to_matrix())
+```
+
+![entangle05](./pic/entangle05.png)
+
+次に、最初にランダム ゲートを Q に適用し、次にテレポーテーション回路を実行し、最後にランダム ゲートの逆を量子ビット B に適用して測定する新しいテスト回路を作成します。 結果は確実に 0 になるはずです。
+
+```python
+# テレポーテーション プロトコルで使用されるのと同じビットと量子ビットを含む新しい回路を作成します。
+test = QuantumCircuit(qubit, ebit0, ebit1, a, b)
+
+# Q でランダムに選択されたゲートから開始します
+test.append(random_gate, qubit)
+test.barrier()
+
+# 上記のテレポーテーション プロトコル全体を追加します。
+test = test.compose(protocol)
+test.barrier()
+
+# 最後に、ランダムユニタリーの逆関数を B に適用して測定します。
+test.apppend(random_gate.inverse(), ebit1)
+
+result = ClassicalRegister(1, 'Result')
+test.add_register(result)
+test.measure(ebit1, result)
+
+display(test.draw())
+```
+
+![entangle06](./pic/entangle06.png)
+
+最後に、この回路で Aer シミュレーターを実行し、出力のヒストグラムをプロットしてみましょう。 3 つの古典的なビットすべての統計が表示されます。一番下/左端のビットは常に 0 である必要があり、量子ビット Q が B に正常にテレポートされたことを示しますが、他の 2 ビットはほぼ均一である必要があります。
+
+```python
+result = AerSimulator().run(test).result()
+statistics = result.get_counts()
+display(plot_histogram(statistics))
+```
+
+![entangle07](./pic/entangle07.png)
+
+必要に応じて、次のように統計をフィルタリングして、テスト結果の量子ビットだけに焦点を当てることもできます。
+
+```python
+filtered_statistics = marginal_distribution(statistics, [2])
+display(plot_histogram(filtered_statistics))
+```
+
+![entangle08](./pic/entangle08.png)
+
+
+
