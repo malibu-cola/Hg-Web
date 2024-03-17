@@ -90,5 +90,21 @@ $$
 ![Question12](./pic/q12.png)
 ![Answer12](./pic/a12.jpg)
 
+- Question13
+![Question13](./pic/q13.png)
+
+- Question14
+![Question14](./pic/q14.png)
+
+- Question15
+![Question15](./pic/q15.png)
+
+- Question16
+![Question16](./pic/q16.png)
+
+- Questio17
+![Question17](./pic/q17.png)
+
 - Question18
 [Entanglement in action](./EntanglementInAction.md)参照
+![Question18](./pic/q18.png)
