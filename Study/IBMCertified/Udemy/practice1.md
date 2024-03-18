@@ -38,4 +38,17 @@
 - (正解)$SS = T, ZZ = T$
 - (不正解)$XX = I, IX = XI, TT = S$
 
- 
+## Q7. 関係性が正しいものを２つ選べ
+
+- (正解)
+  - Inverse of X is X
+  - P($\pi$) = Z
+  - TTTT = Z(T^5にタイポしている)
+  - $\sqrt{Z}$ = S
+- (不正解)
+  - None of the above
+
+## Q8. Xが等しいのは
+
+- (正解)HZH
+- (不正解)TZT, YHY, ZYZ
