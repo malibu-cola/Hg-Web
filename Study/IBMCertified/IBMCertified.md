@@ -18,6 +18,7 @@
 ## Udemy
 
 - [practice1](./Udemy/practice1.md)
+- [practice2](./Udemy/practice2.md)
 
 ## 参考になりそうなページ
 

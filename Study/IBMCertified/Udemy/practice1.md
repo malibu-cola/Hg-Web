@@ -104,6 +104,73 @@
 
 - (正解)$\ket{+}$と$\ket{-}$
 
+固有値を求める。
+$$
+\begin{aligned}
+|\bm{A} - \lambda\bm{E}|
+&=\begin{vmatrix}
+-\lambda&1\\
+1&-\lambda
+\end{vmatrix}\\
+&= \lambda^2 - 1 = 0\\
+\therefore \lambda &= \pm1
+\end{aligned}
+$$
+よってXゲートの固有値は$\pm 1$。
+固有状態ベクトルを求める。固有値1の時、
+$$
+\begin{aligned}
+    (\bm{A} - 1\cdot\bm{E})\bm{x} &= \bm{0}\\
+    \begin{pmatrix}
+        -1&1\\1&-1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1\\x_2
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        0\\0
+    \end{pmatrix}
+\end{aligned}
+$$
+これを満たすのは$x_1 = x_2$となるので、規格化された固有状態ベクトルは
+$$
+\begin{aligned}
+    \bm{x} = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1\\1
+    \end{pmatrix} 
+    = \ket{+}
+\end{aligned}
+$$
+となる。同様に固有値が$-1$の時
+$$
+\begin{aligned}
+    (\bm{A} + 1\cdot\bm{E})\bm{x} &= \bm{0}\\
+    \begin{pmatrix}
+        1&1\\1&1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1\\x_2
+    \end{pmatrix}
+    &=
+    \begin{pmatrix}
+        0\\0
+    \end{pmatrix}
+\end{aligned}
+$$
+これを満たすのは$x_1 = -x_2$となるので、規格化された固有状態ベクトルは
+$$
+\begin{aligned}
+    \bm{x} = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1\\-1
+    \end{pmatrix} 
+    = \ket{-}
+\end{aligned}
+$$
+となる。
+
 ## 18. Xゲートの固有値は
 
 - (正解)$+1$と$-1$
@@ -123,7 +190,7 @@
 ## 21. $U(\theta, \phi, \lambda)$とHゲートが等しくなるのは
 
 - (正解)$U(\pi/2,  0, 0)$
-- $$U(\theta, \phi, \lambda) = \begin{pmatrix}\cos{\frac{\theta}{2}}&-e^{i\lambda}\sin{\frac{\theta}{2}}\\e^{i\phi\sin{\frac{\theta}{2}}}&e^{i(\phi+\lambda)}\cos{\frac{\theta}{2}}\end{pmatrix}$$
+- $$U(\theta, \phi, \lambda) = \begin{pmatrix}\cos{\frac{\theta}{2}}&-e^{i\lambda}\sin{\frac{\theta}{2}}\\e^{i\phi}\sin{\frac{\theta}{2}}&e^{i(\phi+\lambda)}\cos{\frac{\theta}{2}}\end{pmatrix}$$
 - $$U(\pi/2,0, 0) = \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix}$$
 
 ## 22. 以下のうちユニタリーなのは
@@ -257,7 +324,7 @@ qc.draw()
 ## 30. BasicAerで使用できないシミュレータはどれ
 
 - (正解)quantum_simulator
-- (不正解)BasicAerで使用できる。
+- (不正解)BasicAerで使用できる。暗記する
   - qasm_simulator
   - statevector_simulator
   - unitary_simulator
@@ -331,11 +398,11 @@ result
 
 ## 36. Aerで使用できるシミュレーターはどれ
 
-- (正解)
-  - pulse_simulator
-  - qasm_simulator
-  - statevector_simulator
-  - unitary_simulator
+- (正解)暗記する
+  - `pulse_simulator`
+  - `qasm_simulator`
+  - `statevector_simulator`
+  - `unitary_simulator`
 - (不正解)
   - ibmq_simulator
 
