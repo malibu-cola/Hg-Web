@@ -129,4 +129,244 @@
 ## 22. 以下のうちユニタリーなのは
 
 - (正解)H
-- (不正解)2X, H+X, $\frac{1}{2}H$
+- (不正解)$2X, H+X$, $\frac{1}{2}H$
+
+## 23. 3量子ビットと2古典ビットを生成するコードはどれ
+
+- (正解)qc = QuantumCircuit(3, 2)
+
+## 24. 最大限のもつれ回路を生成するコードはどれ
+
+- (正解)
+```python
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0, 1)
+```
+
+## 25. 以下のコードを実行した時$\ket{0}$の測定確率はいくつか
+
+```python
+qc = QuatnumCircuit(1)
+qc.rx(3*math.pi/4)
+```
+
+- (正解)0.1464
+$$
+\begin{aligned}
+Rx(\theta) \ket{0} &= \begin{pmatrix}
+\cos{\frac{\theta}{2}} & -i\sin{\frac{\theta}{2}}\\
+-i\sin{\frac{\theta}{2}}&\cos{\frac{\theta}{2}} 
+\end{pmatrix} 
+\begin{pmatrix}
+1\\0
+\end{pmatrix}
+\\
+&=\cos{\frac{\theta}{2}}\ket{0} -i \sin{\frac{\theta}{2}}\ket{1}
+\end{aligned}
+$$
+より、
+$$
+\begin{aligned}
+Pr(\theta = \frac{3\pi}{4}, \ket{0}) = \cos^2{\frac{3\pi}{8}}
+\end{aligned}
+$$
+半角の公式
+$$
+\begin{aligned}
+\cos^2{\frac{\alpha}{2}} = \frac{1 + \cos{\alpha}}{2}
+\end{aligned}
+$$
+であるから、
+$$
+\begin{aligned}
+\cos^2{\frac{3\pi}{8}} &= \frac{1 + \cos{3\pi/4}}{2}\\
+&= \frac{2 - \sqrt{2}}{4}\\
+&\sim \frac{0.6}{4}\\
+&\sim 0.15
+\end{aligned}
+$$
+
+## 26. 次の状態ベクトルが与えられるコードはどれ
+
+![q26](./pic/q26.png)
+
+- (正解)
+
+```python
+from qiskit import QuantumCircuit, assemble, Aer
+from math import pi, sqrt
+from qiskit.visualization import plot_bloch_multivector, plot_histogram
+
+sim = Aer.get_backnd('aer_sumulator')
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0, 1)
+qc.x(0)
+```
+
+- $\ket{01}$と$\ket{10}$のもつれを作り出す
+
+$$
+\begin{aligned}
+\ket{00}
+&\xrightarrow{h(0)} \frac{1}{\sqrt{2}} (\ket{00} + \ket{01})\\
+&\xrightarrow{cx(0, 1)} \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})\\
+&\xrightarrow{x(0)} \frac{1}{\sqrt{2}}(\ket{01} + \ket{10})
+\end{aligned}
+$$
+
+## 27. トフォリゲートを含む量子回路はどれか
+
+```python
+qc = QuantumCircuit(3)
+# enter code here
+```
+
+- (正解)暗記する。
+  - `qc.mct([0, 2], 1)`
+  - `qc.ccx(0, 1, 2)`
+  - ```c2x = CXGate.control(); qc.append(c2x, [1, 2, 0])```
+
+## 28. 以下の回路の深さはいくつか
+
+```python
+qc = QuantumCircuit(3, 3)
+qc.x(0)
+qc.h(1)
+qc.cx(0, 1)
+qc.h(2)
+qc.cx(0, 2)
+qc.draw()
+```
+
+- (正解)3
+
+![q28](./pic/q28.png)
+
+- `qc.depth()`で確かめられる
+
+## 29. 以下の回路の深さはいくつか
+
+![q29-1](./pic/q29-1.png)
+
+- (正解)4
+
+![q29-2](./pic/q29-2.png)
+
+## 30. BasicAerで使用できないシミュレータはどれ
+
+- (正解)quantum_simulator
+- (不正解)BasicAerで使用できる。
+  - qasm_simulator
+  - statevector_simulator
+  - unitary_simulator
+
+## 31. BasicAerとはなにか
+
+- (正解)
+  - Pythonベースの量子シミュレーターモジュール。シミュレータはBasicAerプロバイダーからアクセスできる
+- (不正解)
+  - qiskitで利用できる量子コンピューティングランタイムの一種
+  - IBMクラウドで利用できる量子コンピュータのシミュレーションフレームワークの一種
+  - 量子回路を表現できるpythonのパッケージ
+
+## 32. 以下の条件で実行すべきコードはどれか
+
+【条件】QASMシミュレータを使用し、量子ビット上で[custom_coupling]を用いて、1024回回路を測定する。
+
+- (正解)
+
+```python
+from qiskit import QuantumCircuit, execute, BasicAer
+
+simulator = BasicAer.get_backend('qasm_simulator')
+
+qc = QuantumCircuit(3)
+qc.measure_all()
+
+custom_coupling = [[0, 1], [1, 2], [2, 0]]
+
+job  = execute(qc, simulator, coupling_map=custom_coupling)
+result = job.result()
+counts = result.get_counts(qc)
+```
+
+- executeの引数(qc, simulator, coupling_map = ***)が大事
+
+## 33. Qiskitの実行の最適化をコントロールするパラメータはどれか
+
+- (正解)`optimization_level`
+
+## 34. 以下のコードのうち、与えられた設定で回路を実行できるのは
+
+【設定】
+- 1236回測定する
+- Unitary SImulatorを使う
+- custom couplingを使用せず、latexフォーマットで出力する。
+
+- (正解)
+
+```python
+from qiskit import QuantumCircuit, execute, BasikAer
+
+simulator = BasicAer.get_backend('unitary_simulator')
+qc = QuantumCircuit(3)
+
+job = execute(qc, simulator, shots=1236)
+
+result = job.result().get_unitary()
+result = array_to_latex(result)
+result
+```
+
+- 答えが同じのがたくさんあるクソ問
+
+## 35. 次のコードのうち、どの部分でエラーが発生するか
+
+![q35](./pic/q35.png)
+
+- (正解)エラーは発生しない
+
+
+## 36. Aerで使用できるシミュレーターはどれ
+
+- (正解)
+  - pulse_simulator
+  - qasm_simulator
+  - statevector_simulator
+  - unitary_simulator
+- (不正解)
+  - ibmq_simulator
+
+## 37. 状態ベクトルシミュレータオブジェクトを使用する際にバックエンドに適切に取り込むのはどのコードか
+
+- (正解)`backend = BasicAer.get_backend('statevector_simulator')`
+
+## 38. `qasm_file`を量子回路`qc`に組み込むのにどのコードが適切か
+
+- (正解)`qc = QuantumCircuit.from_qasm_file('qasm_file')`
+
+- qasm stringから読み取る方法もある
+
+```python
+from qiskit import QuantumCircuit
+circuit = QuantumCircuit.from_qasm_str("""
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[2];
+cz q[0], q[1];
+u(2*pi, 3*pi, -5*pi) q[0];
+""")
+circuit.draw('mpl')
+```
+
+## 39. Xゲートを表しているのはどれ
+
+- (正解)
+
+```python
+qc = QuantumCircuit(1)
+qc.x(0)
+op = Operator(qc)
+```
