@@ -370,3 +370,295 @@ qc = QuantumCircuit(1)
 qc.x(0)
 op = Operator(qc)
 ```
+
+## 40. ２つの演算子`op1`と`op2`について、`average_gate_fidelity()`と`process_fidelity()`が１であることが意味することは
+
+- (正解)`op1 = exp(op2)`
+- 2 つのオペレーター間にグローバル位相差のみがある場合、`average_gate_fidelity()` と `process_fidelity()` は 1 になります。
+- 意味わからん
+  
+- [average_gate_fidelityについて](https://docs.quantum.ibm.com/api/qiskit/0.19/qiskit.quantum_info.average_gate_fidelity)
+- [process_fidelityについて](https://docs.quantum.ibm.com/api/qiskit/0.37/qiskit.quantum_info.process_fidelity)
+
+## 41. 次のコードの出力結果は
+
+```python
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.measure([0, 1], [0, 1])
+simulator = Aer.get_backend('qasm_simulator')
+result = execute(qc, simulator, shots=1024).result()
+counts = result.get_counts(qc)
+print(counts)
+```
+
+- (正解)`{'00': 512, '01': 512}`
+
+## 42. 量子回路qcの深さはどれで得られるか
+
+- (正解)`qc.depth()`
+
+## 43. コードが与えられる。考えられるすべての量子ビット状態に対して等しいカウントを生成する回路を作成するのは、どのコードか
+
+```python
+input_reg = QuantumRegister(2, name='input')
+ancilla = QuantumRegister(1, name = 'ancilla')
+qc = QuantumCircuit(input_reg, ancilla)
+# Insert code
+qc.measure_all()
+```
+
+- (正解)
+
+```
+input_reg.h(0)
+input_reg.h(1)
+ancilla.h(1)
+```
+
+## 44. 3量子ビットを含む量子回路qcにおいて、量子ビットにbarrierを追加する操作はどれ
+
+- (正解)`qc.barrier()`
+
+## 45. 実行時、以下の画像で与えられる回路図を生成するコードはどれ
+
+![q45](./pic/q45.png)
+
+- (正解)`qc.draw(text)`
+
+## 46. 次のうち測定を伴う量子回路を生成するコードはどれ
+
+- (正解)`qc = random_circuit(2, 2, measure=True)`
+
+## 47. jobのステータスを知るコードはどれ
+
+- (正解)`job.status()`
+
+## 48. バックエンドで使用できるハードウェアに関するすべての情報を得るコードはどれ
+
+- (正解)`%qiskit_backend`
+
+## 49. 次のコードの目的は何?`%qiskit_job_watcher`
+
+- (正解)ユーザーの画面上にjobのポップを作成する
+
+## 50. SWAPゲートの図はどれ
+
+![q50](./pic/q50.png)
+
+## 51. 次のヒストグラムを作成する回路はどれ
+
+![q51](./pic/q51.png)
+
+- (正解)
+
+```python
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(1, 0)
+qc.x(0)
+qc.measure_all()
+legend = ['hist1', 'hist2']
+
+back_end = Aer.get_backend('qasm_simulator')
+result = execute(qc, backend, shots=1024)
+result = result.result()
+[count1, count2] = [result.get_counts(), result.get_counts()]
+plot_histogram([counts1, counts2], legend=legend, title='Plot Histogram')
+```
+
+## 52. 以下のコードのうち描画されるのはどのqsphereか
+
+```python
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_state_qsphere
+
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0, 1)
+qc.cz(1, 0)
+
+state = StateVector.from_instruction(qc)
+plot_state_qsphere(state)
+```
+
+- (正解)
+
+![q52](./pic/q52.png)
+
+$$
+\begin{aligned}
+    \ket{00} 
+    &\xrightarrow{h(0)} \frac{1}{\sqrt{2}} (\ket{00} + \ket{01})\\
+    &\xrightarrow{cx(0, 1)} \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})\\
+    &\xrightarrow{cz(1, 0)} \frac{1}{\sqrt{2}}(\ket{00} - \ket{11})
+\end{aligned}
+$$
+
+- $\ket{00}$と$\ket{11}$が同時にあり、かつ位相が$\pi$だけ異なる図が正解
+
+## 53. 次の回路を生み出すコードはどれ
+
+![q53](./pic/q53.png)
+
+```python
+qc = QuantumCircuit(3, 3)
+qc.h(0)
+qc.y(0)
+qc.crx(np.pi/2, 0, 1)
+qc.barrier(0, 1)
+qc.cz(0, 1)
+qc.ry(np.pi/4, 1)
+qc.ccx(0, 1, 2)
+qc.measure_all()
+qc.cz(1, 0)
+
+qc.draw()
+```
+
+## 54. 以下の図を生成するコードはどれ
+
+![q54](./pic/q54.png)
+
+- 正解
+
+```python
+qc = QuantumCircuit(3, 3)
+qc.h(0)
+qc.crx(np.pi/2, 0, 1)
+qc.cz(0, 1)
+qc.h(1)
+qc.ccx(0, 1, 2)
+
+qc.measure([0, 1, 2], [0, 1, 2])
+qc.draw('text')
+```
+
+## 55, 以下のstate city plotを得られるコードはどれ
+
+![q55](./pic/q55.png)
+
+- (正解)
+
+```python
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(1, 0)
+
+backend = BasicAer.get_backend('statevector_simulator')
+job = execute(qc, backend).result()
+plot_state_city(
+    job.get_statevector(qc), 
+    color=['midnightblue', 'midnightblue'], 
+    title='Plot State City')
+```
+
+状態は
+$$
+\begin{aligned}
+    \ket{00} 
+    &\xrightarrow{h(0)} \frac{1}{\sqrt{2}}(\ket{00} + \ket{01})\\
+    &\xrightarrow{cx(1, 0)} \frac{1}{\sqrt{2}}(\ket{00} + \ket{01})
+\end{aligned}
+$$
+となる。密度行列$\rho$は
+$$
+\begin{aligned}
+    \rho &= \ket{\psi}\bra{\psi}\\
+    &= \frac{1}{\sqrt{2}}(\ket{00} + \ket{01}) \frac{1}{\sqrt{2}}(\bra{00} + \bra{01})\\
+    &= \frac{1}{2}(\ket{00} + \ket{01})(\bra{00} + \bra{01})
+\end{aligned}
+$$
+となる。
+$(\ket{00}\bra{00},~ \ket{00}\bra{01},~ \ket{01}\bra{00},~ \ket{01}\ket{01})$が同じ高さで描画される。
+
+## 56. 以下のブロッホ球を作成するコードはどれか
+
+![q56](./pic/q56.png)
+
+- (正解)`plot_bloch_bector([1, np.pi/2. np.pi/3], coord_type='spherical')`
+
+## 57. 以下のコードによって生成されるhintonプロットはどれか
+
+```python
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import DensityMatrix
+from qiskit.visualization import plot_state_hinton
+
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cx(0,1)
+
+state = DensityMatrix(qc)
+plot_state_hinton(state, title='New Hinton Plot')
+```
+
+- (正解)
+
+![q57](./pic/q57.png)
+
+$$
+\begin{aligned}
+\ket{\psi} = \frac{1}{\sqrt{2}} (\ket{00} + \ket{11})
+\end{aligned}
+$$
+について、量子回路の密度行列は
+$$
+\begin{aligned}
+\rho &= \ket{\psi}\bra{\psi}\\
+&= \frac{1}{2}(\ket{00}\bra{00} + \ket{00}\bra{11} + \ket{11}\bra{00} + \ket{11}\bra{11})\\
+&=\frac{1}{2}
+\begin{pmatrix}
+1&0&0&1\\
+0&0&0&0\\
+0&0&0&0\\
+1&0&0&1
+\end{pmatrix}
+\end{aligned}
+$$
+となるので実部、虚部についてそれぞれ正解の図のようになる。
+
+## 58. 以下のパウリベクトル*state+paulivec*プロットを作成するコードはどれか
+
+![q58](./pic/q58.png)
+
+- (正解)
+
+```python
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.h(1)
+
+backend = BasicAer.get_backend('statevector_simulator')
+result = job.result()
+state_vec = result.get_state_vector()
+plot_state_paulivec(state_vec)
+```
+
+$$
+\begin{aligned}
+\ket{\psi} &= \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} + \ket{11})\\
+&= \frac{1}{2}(II + IX + XI + XX)
+\end{aligned}
+$$
+
+## 59. 以下のコードで作成されるブロッホベクトルはどれ
+
+```python
+from qiskit.quantum_info import DensityMatrix
+qc = QuantumCircuit(2)
+qc.h([0])
+qc.cx(0, 1)
+
+matrix = DensityMatrix(qc)
+plot_bloch_multivector(matrix, title='Bloch Spheres', reverse_bits=True)
+```
+![q59](./pic/q59.png)
+
+- (正解)E
+- 量子もつれ状態はここの量子ビットの表現が不可能なので空白になる。タイトルも間違えないように選択する
+
+## 60. 指定されたバックエンドのゲート マップをプロットする命令は次のどれですか?
+
+- (正解)`backend.gate_map()`
