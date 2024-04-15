@@ -266,3 +266,95 @@ e^{i\phi}\sin{\frac{\theta}{2}}&e^{i(\lambda+\phi)}\cos{\frac{\theta}{2}}
 \end{pmatrix}
 \end{aligned}
 $$
+
+## 21. CZゲートはどれ
+
+- (正解)
+  
+![q21](./pic2/q21.png)
+
+## 22. 量子回路を$\ket{11}$に初期化するコードはどれ
+
+- (正解)`qc.initialize([0, 0, 0, 1], [0, 1])`
+
+```python
+qc.initialize([1, 0, 0, 0], [0, 1])# |00>
+qc.initialize([0, 1, 0, 0], [0, 1])# |01>
+qc.initialize([0, 0, 1, 0], [0, 1])# |10>
+qc.initialize([0, 0, 0, 1], [0, 1])# |11>
+```
+
+実行結果
+![q22](./pic2/q22.png)
+
+## 23. リセットゲートの用途は何か
+
+- (正解)量子ビットの状態を$\ket{0}$に戻す。
+- リセットゲートはターゲット量子ビットと新しいancilla量子ビット$\ket{0}$間の交換ゲートと同等
+
+## 24. SWAPゲートに等しいのはどれか
+
+- (正解)
+
+![q24](./pic2/q24.png)
+
+$$
+\begin{aligned}
+CX(0, 1)CX(1, 0)CX(0, 1) 
+&= \begin{pmatrix}
+    1&0&0&0\\
+    0&0&0&1\\
+    0&0&1&0\\
+    0&1&0&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&0&0&0\\
+    0&1&0&0\\
+    0&0&0&1\\
+    0&0&1&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&0&0&0\\
+    0&0&0&1\\
+    0&0&1&0\\
+    0&1&0&0
+\end{pmatrix}\\
+&= \begin{pmatrix}
+    1&0&0&0\\
+    0&0&0&1\\
+    0&0&1&0\\
+    0&1&0&0
+\end{pmatrix}
+\begin{pmatrix}
+    1&0&0&0\\
+    0&0&0&1\\
+    0&1&0&0\\
+    0&0&1&0
+\end{pmatrix}\\
+&= \begin{pmatrix}
+    1&0&0&0\\
+    0&0&1&0\\
+    0&1&0&0\\
+    0&0&0&1
+\end{pmatrix}
+\end{aligned}
+$$
+となり、
+$$
+\begin{aligned}
+\ket{00}\rightarrow\ket{00}\\
+\ket{01}\rightarrow\ket{10}\\
+\ket{10}\rightarrow\ket{01}\\
+\ket{11}\rightarrow\ket{11}
+\end{aligned}
+$$
+で量子ビット0と量子ビット1が交換されていることがわかる。
+
+## 25. $Ry(\pi/2)$ゲートを$\ket{0}$適用後の$\ket{1}$の測定確率はどれか
+
+- (正解)0.5
+- Y軸周りに$\pi/2$回転した際のブロッホ球を考えるとX軸上に来ることから、$\ket{0}$と$\ket{1}$が等確率だと考える。
+- 
+
+
+
